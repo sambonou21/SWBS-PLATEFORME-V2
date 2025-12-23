@@ -1,4 +1,5 @@
 const db = require('../config/db');
+const { shouldUseAi, generateAiReply } = require('./aiService');
 
 let ioInstance = null;
 
@@ -20,6 +21,25 @@ function initSocketIo(io) {
         const msg = await createMessage({ conversationId, senderType, content });
         io.to(`conv:${conversationId}`).emit('chat:message', msg);
         io.to('admins').emit('chat:conversation:update', { conversationId });
+
+        // IA assistant si admin absent et activé
+        if (senderType === 'user' &amp;&amp; (await shouldUseAi())) {
+          const messages = await getConversationMessages(conversationId);
+          const aiReply = await generateAiReply({
+            conversation: { id: conversationId },
+            messages,
+          });
+          if (aiReply) {
+            const aiMsg = await createMessage({
+              conversationId,
+              senderType: 'ai',
+              content: aiReply,
+            });
+            io.to(`conv:${conversationId}`).emit('chat:message', aiMsg);
+            io.to('admins').emit('chat:conversation:update', { conversationId });
+          }
+        }
+
         if (ack) ack({ ok: true, messageId: msg.id });
       } catch (err) {
         if (ack) ack({ ok: false, error: 'Unable to send message' });

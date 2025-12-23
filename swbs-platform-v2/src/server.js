@@ -11,10 +11,13 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.DOMAIN || '*',
+    origin: process.env.DOMAIN || process.env.BASE_URL || '*',
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
   },
 });
+
+// Expose io instance à l'app pour certains services (ex: quoteService)
+app.set('io', io);
 
 initSocketIo(io);
 
