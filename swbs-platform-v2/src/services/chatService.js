@@ -6,8 +6,8 @@ let ioInstance = null;
 function initSocketIo(io) {
   ioInstance = io;
 
-  io.on('connection', (socket) =&gt; {
-    socket.on('join', ({ conversationId, role }) =&gt; {
+  io.on('connection', (socket) => {
+    socket.on('join', ({ conversationId, role }) => {
       if (conversationId) {
         socket.join(`conv:${conversationId}`);
       }
@@ -16,14 +16,14 @@ function initSocketIo(io) {
       }
     });
 
-    socket.on('chat:message', async ({ conversationId, senderType, content }, ack) =&gt; {
+    socket.on('chat:message', async ({ conversationId, senderType, content }, ack) => {
       try {
         const msg = await createMessage({ conversationId, senderType, content });
         io.to(`conv:${conversationId}`).emit('chat:message', msg);
         io.to('admins').emit('chat:conversation:update', { conversationId });
 
         // IA assistant si admin absent et activé
-        if (senderType === 'user' &amp;&amp; (await shouldUseAi())) {
+        if (senderType === 'user' && (await shouldUseAi())) {
           const messages = await getConversationMessages(conversationId);
           const aiReply = await generateAiReply({
             conversation: { id: conversationId },
