@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "shop": "Boutique",
+    "quote": "Demander un devis",
+    "login": "Connexion"
+  },
+  "hero": {
+    "title": "Votre plateforme digitale pour booster votre business",
+    "subtitle": "SWBS conçoit, développe et opère des solutions web modernes, rapides et sécurisées.",
+    "ctaQuote": "Demander un devis",
+    "ctaServices": "Voir nos services"
+  }
+}

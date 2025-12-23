@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>SWBS Platform - Accueil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body data-page="home">
+    <header class="swbs-header">
+      <div class="container header-inner">
+        <div class="logo">SWBS</div>
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+          </button>
+          <ul class="nav-links">
+            <li><a href="/" data-i18n="nav.home">Accueil</a></li>
+            <li><a href="/services" data-i18n="nav.services">Services</a></li>
+            <li><a href="/portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li><a href="/boutique" data-i18n="nav.shop">Boutique</a></li>
+            <li><a href="/devis" class="btn-primary" data-i18n="nav.quote">Devis</a></li>
+          </ul>
+          <div class="nav-actions">
+            <select id="lang-switcher">
+              <option value="fr">FR</option>
+              <option value="en">EN</option>
+            </select>
+            <select id="currency-switcher">
+              <option value="FCFA">FCFA</option>
+              <option value="NGN">NGN</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+            </select>
+            <a href="/login" class="btn-outline" data-i18n="nav.login">Connexion</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-text">
+            <h1 data-i18n="hero.title">Votre plateforme digitale pour booster votre business</h1>
+            <p data-i18n="hero.subtitle">
+              SWBS conçoit, développe et opère des solutions web modernes, rapides et sécurisées.
+            </p>
+            <div class="hero-actions">
+              <a href="/devis" class="btn-primary" data-i18n="hero.ctaQuote">Demander un devis</a>
+              <a href="/services" class="btn-secondary" data-i18n="hero.ctaServices">Voir nos services</a>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-card">
+              <span class="tag">Realtime</span>
+              <h2>Chat &amp; Devis en temps réel</h2>
+              <p>Intégré à votre site, 100% responsive.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/i18n.js"></script>
+    <script src="/assets/js/currency.js"></script>
+    <script src="/assets/js/chat-widget.js"></script>
+  </body>
+</html>

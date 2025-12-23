@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "shop": "Shop",
+    "quote": "Get a quote",
+    "login": "Sign in"
+  },
+  "hero": {
+    "title": "Your digital platform to scale your business",
+    "subtitle": "SWBS designs, builds and operates modern, fast and secure web solutions.",
+    "ctaQuote": "Request a quote",
+    "ctaServices": "View services"
+  }
+}
