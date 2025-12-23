@@ -15,51 +15,51 @@ function redirectHtml(req, res, next) {
 
 router.use(redirectHtml);
 
-router.get('/', (req, res) =&gt; {
+router.get('/', (req, res) => {
   res.sendFile(path.join(publicDir, 'index.html'));
 });
 
-router.get('/services', (req, res) =&gt; {
+router.get('/services', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'services.html'));
 });
 
-router.get('/portfolio', (req, res) =&gt; {
+router.get('/portfolio', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'portfolio.html'));
 });
 
-router.get('/contact', (req, res) =&gt; {
+router.get('/contact', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'contact.html'));
 });
 
-router.get('/devis', (req, res) =&gt; {
+router.get('/devis', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'devis.html'));
 });
 
-router.get('/boutique', (req, res) =&gt; {
+router.get('/boutique', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'boutique.html'));
 });
 
-router.get('/login', (req, res) =&gt; {
+router.get('/login', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'login.html'));
 });
 
-router.get('/register', (req, res) =&gt; {
+router.get('/register', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'register.html'));
 });
 
-router.get('/verify-email', (req, res) =&gt; {
+router.get('/verify-email', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'verify-email.html'));
 });
 
-router.get('/dashboard', (req, res) =&gt; {
+router.get('/dashboard', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'dashboard.html'));
 });
 
-router.get('/chat', (req, res) =&gt; {
+router.get('/chat', (req, res) => {
   res.sendFile(path.join(publicDir, 'pages', 'chat.html'));
 });
 
-router.get('/admin/:page', (req, res) =&gt; {
+router.get('/admin/:page', (req, res) => {
   const allowed = [
     'dashboard',
     'quotes',
