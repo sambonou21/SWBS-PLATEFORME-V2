@@ -1,11 +1,16 @@
 const express = require('express');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
-const { nanoid } = require('nanoid');
+const crypto = require('crypto');
 
 const db = require('../config/db');
 const validate = require('../middlewares/validate');
 const { sendVerificationEmail } = require('../services/userService');
+
+function generateVerifyToken(length = 40) {
+  // Génère un token hexadécimal et le tronque à la longueur demandée
+  return crypto.randomBytes(length).toString('hex').slice(0, length);
+}
 
 const router = express.Router();
 
@@ -33,7 +38,7 @@ router.post('/register', validate(registerSchema), async (req, res, next) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-    const verifyToken = nanoid(40);
+    const verifyToken = generateVerifyToken(40);
     const verifyExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
 
     const [result] = await db
