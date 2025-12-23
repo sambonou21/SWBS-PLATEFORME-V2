@@ -4,7 +4,11 @@ const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 const sharp = require('sharp');
 
-const uploadsRoot = path.join(__dirname, '..', '..', 'public', 'uploads');
+// Si UPLOAD_DIR est défini, on l'utilise comme racine absolue (cas o2switch).
+// Sinon, fallback sur /public/uploads à la racine du projet.
+const uploadsRoot =
+  process.env.UPLOAD_DIR ||
+  path.join(__dirname, '..', '..', 'public', 'uploads');
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
