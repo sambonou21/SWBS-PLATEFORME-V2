@@ -1,12 +1,20 @@
 const express = require('express');
 const Joi = require('joi');
-const slugify = require('slugify');
 
 const requireAuth = require('../middlewares/requireAuth');
 const requireAdmin = require('../middlewares/requireAdmin');
 const validate = require('../middlewares/validate');
 const { createUploader } = require('../middlewares/upload');
 const productService = require('../services/productService');
+
+function slugify(text) {
+  return String(text)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 const router = express.Router();
 

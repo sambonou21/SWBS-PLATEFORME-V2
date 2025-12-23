@@ -1,6 +1,5 @@
 const express = require('express');
 const Joi = require('joi');
-const slugify = require('slugify');
 
 const requireAuth = require('../middlewares/requireAuth');
 const requireAdmin = require('../middlewares/requireAdmin');
@@ -10,6 +9,15 @@ const serviceService = require('../services/serviceService');
 const portfolioService = require('../services/portfolioService');
 const db = require('../config/db');
 const { createUploader } = require('../middlewares/upload');
+
+function slugify(text) {
+  return String(text)
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
 const router = express.Router();
 
