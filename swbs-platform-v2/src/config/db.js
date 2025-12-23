@@ -16,6 +16,7 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
+  multipleStatements: true, // nécessaire pour exécuter schema.sql en une seule requête
 });
 
 module.exports = pool;
