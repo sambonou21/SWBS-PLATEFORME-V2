@@ -4,7 +4,7 @@ function getDefaultLanguage() {
 
 function languageDetector(req, res, next) {
   let lang = req.cookies.lang || getDefaultLanguage();
-  if (req.query.lang &amp;&amp; ['fr', 'en'].includes(req.query.lang)) {
+  if (req.query.lang && ['fr', 'en'].includes(req.query.lang)) {
     lang = req.query.lang;
     res.cookie('lang', lang, { httpOnly: false, maxAge: 365 * 24 * 60 * 60 * 1000 });
   }
