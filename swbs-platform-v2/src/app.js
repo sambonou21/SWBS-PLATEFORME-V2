@@ -18,6 +18,10 @@ const authRoutes = require('./routes/auth.routes');
 const quotesRoutes = require('./routes/quotes.routes');
 const chatRoutes = require('./routes/chat.routes');
 const clientRoutes = require('./routes/client.routes');
+const productsRoutes = require('./routes/products.routes');
+const ordersRoutes = require('./routes/orders.routes');
+const adminRoutes = require('./routes/admin.routes');
+const webhookRoutes = require('./routes/webhook.routes');
 const { csrfMiddleware } = require('./middlewares/csrf');
 const { errorHandler } = require('./middlewares/errorHandler');
 
@@ -78,6 +82,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/quotes', quotesRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/client', clientRoutes);
+app.use('/api/products', productsRoutes);
+app.use('/api/orders', ordersRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/webhook', webhookRoutes);
 
 // Healthcheck
 app.get('/health', (req, res) => {
