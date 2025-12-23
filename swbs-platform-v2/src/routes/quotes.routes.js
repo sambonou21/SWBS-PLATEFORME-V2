@@ -17,7 +17,7 @@ const quoteSchema = Joi.object({
 });
 
 // Client: créer un devis
-router.post('/', requireAuth, validate(quoteSchema), async (req, res, next) =&gt; {
+router.post('/', requireAuth, validate(quoteSchema), async (req, res, next) => {
   try {
     const payload = {
       details: req.body.details,
@@ -45,7 +45,7 @@ router.post('/', requireAuth, validate(quoteSchema), async (req, res, next) =&gt
 });
 
 // Client: liste de ses devis
-router.get('/client', requireAuth, async (req, res, next) =&gt; {
+router.get('/client', requireAuth, async (req, res, next) => {
   try {
     const quotes = await quoteService.getClientQuotes(req.session.user.id);
     res.json({ quotes });
@@ -55,7 +55,7 @@ router.get('/client', requireAuth, async (req, res, next) =&gt; {
 });
 
 // Admin: liste de tous les devis
-router.get('/admin', requireAuth, requireAdmin, async (req, res, next) =&gt; {
+router.get('/admin', requireAuth, requireAdmin, async (req, res, next) => {
   try {
     const quotes = await quoteService.getAdminQuotes();
     res.json({ quotes });
@@ -76,7 +76,7 @@ router.patch(
         .required(),
     })
   ),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const updated = await quoteService.updateQuoteStatus(
         req.params.id,

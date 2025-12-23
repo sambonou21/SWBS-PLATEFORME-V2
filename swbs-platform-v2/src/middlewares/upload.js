@@ -31,7 +31,7 @@ function createUploader(subfolder) {
     },
   });
 
-  const fileFilter = (req, file, cb) =&gt; {
+  const fileFilter = (req, file, cb) => {
     const allowed = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowed.includes(file.mimetype)) {
       return cb(new Error('Invalid file type. Only JPG, PNG, WEBP allowed.'));
@@ -47,8 +47,8 @@ function createUploader(subfolder) {
 
   return {
     uploadSingle(fieldName) {
-      return async (req, res, next) =&gt; {
-        upload.single(fieldName)(req, res, async (err) =&gt; {
+      return async (req, res, next) => {
+        upload.single(fieldName)(req, res, async (err) => {
           if (err) {
             return res.status(400).json({ error: err.message });
           }

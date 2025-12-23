@@ -22,10 +22,10 @@ const orderSchema = Joi.object({
 });
 
 // Créer une commande (avant paiement FEDEPAY)
-router.post('/', requireAuth, validate(orderSchema), async (req, res, next) =&gt; {
+router.post('/', requireAuth, validate(orderSchema), async (req, res, next) => {
   try {
     const products = await productService.listPublicProducts();
-    const productMap = new Map(products.map((p) =&gt; [p.id, p]));
+    const productMap = new Map(products.map((p) => [p.id, p]));
 
     let totalFcfa = 0;
     const items = [];

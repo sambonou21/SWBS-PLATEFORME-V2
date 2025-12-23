@@ -21,7 +21,7 @@ const productSchema = Joi.object({
   status: Joi.string().valid('draft', 'published', 'archived').required(),
 });
 
-router.get('/', async (req, res, next) =&gt; {
+router.get('/', async (req, res, next) => {
   try {
     const products = await productService.listPublicProducts();
     res.json({ products });
@@ -30,7 +30,7 @@ router.get('/', async (req, res, next) =&gt; {
   }
 });
 
-router.get('/:slug', async (req, res, next) =&gt; {
+router.get('/:slug', async (req, res, next) => {
   try {
     const product = await productService.getProductBySlug(req.params.slug);
     if (!product) {
@@ -44,7 +44,7 @@ router.get('/:slug', async (req, res, next) =&gt; {
 
 // Admin endpoints
 
-router.get('/admin/list', requireAuth, requireAdmin, async (req, res, next) =&gt; {
+router.get('/admin/list', requireAuth, requireAdmin, async (req, res, next) => {
   try {
     const products = await productService.listAdminProducts();
     const categories = await productService.getCategories();
@@ -60,7 +60,7 @@ router.post(
   requireAdmin,
   uploader.uploadSingle('image'),
   validate(productSchema),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const slug =
         slugify(req.body.title, { lower: true, strict: true }) +
@@ -89,7 +89,7 @@ router.put(
   requireAuth,
   requireAdmin,
   uploader.uploadSingle('image'),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const patch = {};
       if (req.body.title) patch.title = req.body.title;
@@ -115,7 +115,7 @@ router.delete(
   '/admin/:id',
   requireAuth,
   requireAdmin,
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       await productService.deleteProduct(req.params.id);
       res.json({ ok: true });
@@ -134,7 +134,7 @@ router.post(
       name: Joi.string().min(2).max(191).required(),
     })
   ),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const slug = slugify(req.body.name, { lower: true, strict: true });
       const category = await productService.createCategory({

@@ -21,14 +21,14 @@ const loginSchema = Joi.object({
   password: Joi.string().min(8).max(128).required(),
 });
 
-router.post('/register', validate(registerSchema), async (req, res, next) =&gt; {
+router.post('/register', validate(registerSchema), async (req, res, next) => {
   const { name, email, phone, password } = req.body;
 
   try {
     const [rows] = await db
       .promise()
       .query('SELECT id FROM users WHERE email = ?', [email]);
-    if (rows.length &gt; 0) {
+    if (rows.length > 0) {
       return res.status(400).json({ error: 'Email already registered' });
     }
 
@@ -60,7 +60,7 @@ router.post('/register', validate(registerSchema), async (req, res, next) =&gt; 
   }
 });
 
-router.post('/login', validate(loginSchema), async (req, res, next) =&gt; {
+router.post('/login', validate(loginSchema), async (req, res, next) => {
   const { email, password } = req.body;
 
   try {
@@ -107,15 +107,15 @@ router.post('/login', validate(loginSchema), async (req, res, next) =&gt; {
   }
 });
 
-router.post('/logout', (req, res, next) =&gt; {
-  req.session.destroy((err) =&gt; {
+router.post('/logout', (req, res, next) => {
+  req.session.destroy((err) => {
     if (err) return next(err);
     res.clearCookie(process.env.SESSION_NAME || 'swbs_sid');
     res.json({ message: 'Logged out' });
   });
 });
 
-router.get('/verify-email', async (req, res, next) =&gt; {
+router.get('/verify-email', async (req, res, next) => {
   const { token } = req.query;
   if (!token) {
     return res.status(400).json({ error: 'Missing token' });
@@ -125,7 +125,7 @@ router.get('/verify-email', async (req, res, next) =&gt; {
     const [rows] = await db
       .promise()
       .query(
-        'SELECT * FROM users WHERE verifyToken = ? AND verifyExpires &gt; NOW()',
+        'SELECT * FROM users WHERE verifyToken = ? AND verifyExpires > NOW()',
         [token]
       );
 

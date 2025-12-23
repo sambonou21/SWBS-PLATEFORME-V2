@@ -23,7 +23,7 @@ router.use(requireAuth, requireAdmin);
 // ----------------------
 
 // GET /api/admin/settings
-router.get('/settings', async (req, res, next) =&gt; {
+router.get('/settings', async (req, res, next) => {
   try {
     const settings = await settingsService.getSettings();
     res.json({ settings });
@@ -38,6 +38,36 @@ router.patch(
   validate(
     Joi.object({
       presenceAdmin: Joi.boolean().optional(),
+  async (req, res, next) => {
+    try {
+      const patch = {};
+      if (req.body.presenceAdmin !== undefined) {
+        patch.presenceAdmin = req.body.presenceAdmin ? 1 : 0;
+      }
+      if (req.body.currencyRates) {
+        patch.currencyRates = JSON.stringify(req.body.currencyRates);
+      }
+      if (req.body.fedapayKeys) {
+        patch.fedapayKeys = JSON.stringify(req.body.fedapayKeys);
+      }
+      if (req.body.aiKeys) {
+        patch.aiKeys = JSON.stringify(req.body.aiKeys);
+      }
+      if (req.body.languageDefault) {
+        patch.languageDefault = req.body.languageDefault;
+      }
+      if (req.body.chatConfig) {
+        patch.chatConfig = JSON.stringify(req.body.chatConfig);
+      }
+
+      const settings = await settingsService.updateSettings(patch);
+      res.json({ settings });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
       currencyRates: Joi.object().pattern(Joi.string(), Joi.number()).optional(),
       fedapayKeys: Joi.object().optional(),
       aiKeys: Joi.object().optional(),

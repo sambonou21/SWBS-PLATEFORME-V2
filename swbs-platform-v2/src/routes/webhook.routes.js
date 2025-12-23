@@ -17,7 +17,7 @@ const webhookSchema = Joi.object({
 router.post(
   '/fedapay',
   validate(webhookSchema),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const mapStatus = req.body.status === 'paid' ? 'paid' : 'cancelled';
       await orderService.updateOrderStatus(

@@ -20,7 +20,7 @@ const messageSchema = Joi.object({
 });
 
 // Créer conversation pour lead anonyme
-router.post('/lead', validate(leadSchema), async (req, res, next) =&gt; {
+router.post('/lead', validate(leadSchema), async (req, res, next) => {
   try {
     const conv = await chatService.createConversation({
       userId: null,
@@ -35,12 +35,12 @@ router.post('/lead', validate(leadSchema), async (req, res, next) =&gt; {
 });
 
 // Créer conversation pour user connecté si besoin
-router.post('/start', requireAuth, async (req, res, next) =&gt; {
+router.post('/start', requireAuth, async (req, res, next) => {
   try {
     const conversations = await chatService.getUserConversations(
       req.session.user.id
     );
-    if (conversations.length &gt; 0) {
+    if (conversations.length > 0) {
       return res.json({ conversation: conversations[0] });
     }
     const conv = await chatService.createConversation({
@@ -53,7 +53,7 @@ router.post('/start', requireAuth, async (req, res, next) =&gt; {
 });
 
 // Poster un message (HTTP fallback, à côté de Socket.IO)
-router.post('/message', validate(messageSchema), async (req, res, next) =&gt; {
+router.post('/message', validate(messageSchema), async (req, res, next) => {
   try {
     const msg = await chatService.createMessage({
       conversationId: req.body.conversationId,
@@ -69,7 +69,7 @@ router.post('/message', validate(messageSchema), async (req, res, next) =&gt; {
 // Historique messages d'une conversation
 router.get(
   '/:conversationId/messages',
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const messages = await chatService.getConversationMessages(
         req.params.conversationId
@@ -82,7 +82,7 @@ router.get(
 );
 
 // Admin: liste conversations
-router.get('/admin/conversations', requireAuth, requireAdmin, async (req, res, next) =&gt; {
+router.get('/admin/conversations', requireAuth, requireAdmin, async (req, res, next) => {
   try {
     const conversations = await chatService.getAllConversations();
     res.json({ conversations });

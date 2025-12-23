@@ -7,7 +7,7 @@ const db = require('../config/db');
 const router = express.Router();
 
 // /api/client/quotes
-router.get('/quotes', requireAuth, async (req, res, next) =&gt; {
+router.get('/quotes', requireAuth, async (req, res, next) => {
   try {
     const quotes = await quoteService.getClientQuotes(req.session.user.id);
     res.json({ quotes });
@@ -17,7 +17,7 @@ router.get('/quotes', requireAuth, async (req, res, next) =&gt; {
 });
 
 // /api/client/messages
-router.get('/messages', requireAuth, async (req, res, next) =&gt; {
+router.get('/messages', requireAuth, async (req, res, next) => {
   try {
     const conversations = await chatService.getUserConversations(
       req.session.user.id
@@ -25,7 +25,7 @@ router.get('/messages', requireAuth, async (req, res, next) =&gt; {
     if (conversations.length === 0) {
       return res.json({ conversations: [], messages: [] });
     }
-    const ids = conversations.map((c) =&gt; c.id);
+    const ids = conversations.map((c) => c.id);
     const [messages] = await db
       .promise()
       .query(
@@ -39,7 +39,7 @@ router.get('/messages', requireAuth, async (req, res, next) =&gt; {
 });
 
 // /api/client/orders
-router.get('/orders', requireAuth, async (req, res, next) =&gt; {
+router.get('/orders', requireAuth, async (req, res, next) => {
   try {
     const [orders] = await db
       .promise()

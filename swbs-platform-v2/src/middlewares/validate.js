@@ -1,11 +1,11 @@
 function validate(schema) {
-  return (req, res, next) =&gt; {
+  return (req, res, next) => {
     const options = { abortEarly: false, allowUnknown: true, stripUnknown: true };
     const { error, value } = schema.validate(req.body, options);
     if (error) {
       return res.status(400).json({
         error: 'Validation error',
-        details: error.details.map((d) =&gt; d.message),
+        details: error.details.map((d) => d.message),
       });
     }
     req.body = value;
