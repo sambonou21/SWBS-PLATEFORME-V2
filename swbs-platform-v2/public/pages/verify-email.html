@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vérification email - SWBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body data-page="verify-email">
+    <header class="swbs-header">
+      <div class="container header-inner">
+        <div class="logo">SWBS</div>
+      </div>
+    </header>
+    <main>
+      <section class="page-section">
+        <div class="container">
+          <div class="card" style="max-width:480px;margin:0 auto;text-align:center;">
+            <h1>Vérification de votre email</h1>
+            <p id="verify-message">Validation en cours...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/assets/js/app.js"></script>
+    <script>
+      (function () {
+        async function verify() {
+          const params = new URLSearchParams(window.location.search);
+          const token = params.get('token');
+          const msgEl = document.getElementById('verify-message');
+          if (!token) {
+            msgEl.textContent = 'Lien invalide.';
+            return;
+          }
+          try {
+            const res = await fetch('/api/auth/verify-email?token=' + encodeURIComponent(token));
+            const data = await res.json();
+            if (!res.ok) {
+              msgEl.textContent = data.error || 'Lien invalide ou expiré.';
+            } else {
+              msgEl.textContent = data.message || 'Email vérifié avec succès. Vous pouvez maintenant vous connecter.';
+            }
+          } catch (err) {
+            msgEl.textContent = 'Erreur lors de la vérification.';
+          }
+        }
+        document.addEventListener('DOMContentLoaded', verify);
+      })();
+    </script>
+  </body>
+</html>

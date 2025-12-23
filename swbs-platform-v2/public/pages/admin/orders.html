@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Admin - Commandes SWBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/admin.css" />
+  </head>
+  <body data-page="admin-orders">
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <h1>SWBS Admin</h1>
+        <ul class="admin-nav">
+          <li><a href="/admin/dashboard">Dashboard</a></li>
+          <li><a href="/admin/quotes">Devis</a></li>
+          <li><a href="/admin/chat">Chat</a></li>
+          <li><a href="/admin/products">Produits</a></li>
+          <li><a href="/admin/orders">Commandes</a></li>
+          <li><a href="/admin/services">Services</a></li>
+          <li><a href="/admin/portfolio">Portfolio</a></li>
+          <li><a href="/admin/clients">Clients</a></li>
+          <li><a href="/admin/settings">Paramètres</a></li>
+        </ul>
+      </aside>
+      <main class="admin-main">
+        <h2>Commandes</h2>
+        <div class="admin-card">
+          <table class="table" id="admin-orders-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Total FCFA</th>
+                <th>Devise</th>
+                <th>Statut</th>
+                <th>Référence</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <script src="/assets/js/admin.js"></script>
+    <script src="/assets/js/admin-orders.js"></script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Admin - Paramètres SWBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/admin.css" />
+  </head>
+  <body data-page="admin-settings">
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <h1>SWBS Admin</h1>
+        <ul class="admin-nav">
+          <li><a href="/admin/dashboard">Dashboard</a></li>
+          <li><a href="/admin/quotes">Devis</a></li>
+          <li><a href="/admin/chat">Chat</a></li>
+          <li><a href="/admin/products">Produits</a></li>
+          <li><a href="/admin/orders">Commandes</a></li>
+          <li><a href="/admin/services">Services</a></li>
+          <li><a href="/admin/portfolio">Portfolio</a></li>
+          <li><a href="/admin/clients">Clients</a></li>
+          <li><a href="/admin/settings">Paramètres</a></li>
+        </ul>
+      </aside>
+      <main class="admin-main">
+        <h2>Paramètres</h2>
+        <div class="admin-card">
+          <form id="admin-settings-form">
+            <h3>Présence admin</h3>
+            <label>
+              <input type="checkbox" name="presenceAdmin" />
+              Admin présent (le chat IA ne répond pas si coché)
+            </label>
+
+            <h3 style="margin-top:1rem;">Taux de change (base FCFA)</h3>
+            <div>
+              <label>FCFA</label>
+              <input name="rate_FCFA" type="number" step="0.0001" />
+            </div>
+            <div>
+              <label>NGN</label>
+              <input name="rate_NGN" type="number" step="0.0001" />
+            </div>
+            <div>
+              <label>USD</label>
+              <input name="rate_USD" type="number" step="0.0001" />
+            </div>
+            <div>
+              <label>EUR</label>
+              <input name="rate_EUR" type="number" step="0.0001" />
+            </div>
+
+            <h3 style="margin-top:1rem;">FEDEPAY</h3>
+            <div>
+              <label>Public key</label>
+              <input name="fedapay_public" type="text" />
+            </div>
+            <div>
+              <label>Secret key</label>
+              <input name="fedapay_secret" type="text" />
+            </div>
+            <div>
+              <label>Mode</label>
+              <select name="fedapay_mode">
+                <option value="sandbox">Sandbox</option>
+                <option value="live">Live</option>
+              </select>
+            </div>
+
+            <h3 style="margin-top:1rem;">IA</h3>
+            <div>
+              <label>IA activée</label>
+              <input type="checkbox" name="ai_enabled" />
+            </div>
+            <div>
+              <label>Instructions IA</label>
+              <textarea name="ai_instructions"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="margin-top:1rem;">Enregistrer</button>
+            <p id="admin-settings-message"></p>
+          </form>
+        </div>
+      </main>
+    </div>
+    <script src="/assets/js/admin.js"></script>
+    <script src="/assets/js/admin-settings.js"></script>
+  </body>
+</html>

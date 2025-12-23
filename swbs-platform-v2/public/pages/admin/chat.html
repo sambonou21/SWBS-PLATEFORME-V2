@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Admin - Chat SWBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/admin.css" />
+  </head>
+  <body data-page="admin-chat">
+    <div class="admin-layout">
+      <aside class="admin-sidebar">
+        <h1>SWBS Admin</h1>
+        <ul class="admin-nav">
+          <li><a href="/admin/dashboard">Dashboard</a></li>
+          <li><a href="/admin/quotes">Devis</a></li>
+          <li><a href="/admin/chat">Chat</a></li>
+          <li><a href="/admin/products">Produits</a></li>
+          <li><a href="/admin/orders">Commandes</a></li>
+          <li><a href="/admin/services">Services</a></li>
+          <li><a href="/admin/portfolio">Portfolio</a></li>
+          <li><a href="/admin/clients">Clients</a></li>
+          <li><a href="/admin/settings">Paramètres</a></li>
+        </ul>
+      </aside>
+      <main class="admin-main">
+        <h2>Chat</h2>
+        <div class="admin-card" style="display:grid;grid-template-columns:260px minmax(0,1fr);gap:1rem;">
+          <div>
+            <h3>Conversations</h3>
+            <ul id="admin-conversations"></ul>
+          </div>
+          <div>
+            <h3>Messages</h3>
+            <div id="admin-chat-messages" style="max-height:400px;overflow-y:auto;margin-bottom:0.5rem;"></div>
+            <form id="admin-chat-form">
+              <input id="admin-chat-input" type="text" placeholder="Réponse..." required />
+              <button type="submit" class="btn-primary">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/assets/js/admin.js"></script>
+    <script src="/assets/js/admin-chat.js"></script>
+  </body>
+</html>

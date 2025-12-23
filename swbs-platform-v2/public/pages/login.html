@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Connexion - SWBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body data-page="login">
+    <header class="swbs-header">
+      <div class="container header-inner">
+        <div class="logo">SWBS</div>
+      </div>
+    </header>
+    <main>
+      <section class="page-section">
+        <div class="container">
+          <div class="card" style="max-width:420px;margin:0 auto;">
+            <h1>Connexion</h1>
+            <form id="login-form">
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div>
+                <label for="password">Mot de passe</label>
+                <input id="password" name="password" type="password" required />
+              </div>
+              <button type="submit" class="btn-primary" style="margin-top:1rem;">Se connecter</button>
+              <p id="login-message" style="margin-top:0.75rem;"></p>
+            </form>
+            <p style="margin-top:1rem;font-size:0.9rem;">
+              Pas encore de compte ?
+              <a href="/register">Créer un compte</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/auth.js"></script>
+  </body>
+</html>
