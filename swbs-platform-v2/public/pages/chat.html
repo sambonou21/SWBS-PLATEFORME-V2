@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chat SWBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body data-page="chat">
+    <main>
+      <section class="page-section">
+        <div class="container">
+          <div class="card" id="chat-container">
+            <div id="chat-messages" style="max-height: 400px; overflow-y: auto; margin-bottom: 1rem;"></div>
+            <form id="chat-form">
+              <input id="chat-input" type="text" placeholder="Votre message..." required />
+              <button type="submit" class="btn-primary">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/assets/js/chat-client.js"></script>
+  </body>
+</html>

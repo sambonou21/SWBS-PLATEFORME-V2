@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demander un devis - SWBS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body data-page="devis">
+    <header class="swbs-header">
+      <div class="container header-inner">
+        <div class="logo">SWBS</div>
+      </div>
+    </header>
+    <main>
+      <section class="page-section">
+        <div class="container">
+          <div class="card">
+            <h1 data-i18n="quote.title">Demander un devis</h1>
+            <p data-i18n="quote.subtitle">
+              Décrivez votre projet, nous revenons vers vous rapidement.
+            </p>
+            <form id="quote-form">
+              <div>
+                <label for="serviceId">Service</label>
+                <select id="serviceId" name="serviceId">
+                  <option value="">Sélectionner un service</option>
+                </select>
+              </div>
+              <div>
+                <label for="details">Détails du projet</label>
+                <textarea id="details" name="details" rows="5" required></textarea>
+              </div>
+              <div>
+                <label for="budget">Budget estimé</label>
+                <input id="budget" name="budget" type="text" />
+              </div>
+              <div>
+                <label for="deadline">Délai souhaité</label>
+                <input id="deadline" name="deadline" type="text" />
+              </div>
+              <button type="submit" class="btn-primary">Envoyer le devis</button>
+              <p id="quote-message"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/i18n.js"></script>
+    <script src="/assets/js/currency.js"></script>
+    <script src="/assets/js/devis.js"></script>
+  </body>
+</html>

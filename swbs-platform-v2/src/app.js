@@ -15,6 +15,9 @@ const i18nConfig = require('./config/i18n');
 
 const publicRoutes = require('./routes/public.routes');
 const authRoutes = require('./routes/auth.routes');
+const quotesRoutes = require('./routes/quotes.routes');
+const chatRoutes = require('./routes/chat.routes');
+const clientRoutes = require('./routes/client.routes');
 const { csrfMiddleware } = require('./middlewares/csrf');
 const { errorHandler } = require('./middlewares/errorHandler');
 
@@ -72,6 +75,9 @@ app.use(csrfMiddleware);
 // Routes
 app.use('/', publicRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/quotes', quotesRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/client', clientRoutes);
 
 // Healthcheck
 app.get('/health', (req, res) => {
