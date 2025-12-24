@@ -57,12 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const conversationInput = document.getElementById('swbs-chat-conversation-id');
         const startUrl = widget.dataset.startUrl;
         const sendUrl = widget.dataset.sendUrl;
+        const fetchBaseUrl = widget.dataset.fetchBaseUrl || null;
+
+        let lastMessageId = null;
+        let pollIntervalId = null;
 
         function openChat() {
             windowEl.classList.add('is-open');
             toggleBtn.style.display = 'none';
             if (!conversationInput.value) {
                 startConversation();
+            } else if (fetchBaseUrl && !pollIntervalId) {
+                startPolling();
             }
         }
 
@@ -89,6 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
             messagesEl.scrollTop = messagesEl.scrollHeight;
         }
 
+        function syncMessages(messages) {
+            messages.forEach(msg => {
+                if (!lastMessageId || msg.id > lastMessageId) {
+                    const type = msg.sender_type || 'admin';
+                    appendMessage(msg.content, type);
+                    lastMessageId = msg.id;
+                }
+            });
+        }
+
         function startConversation() {
             fetch(startUrl, {
                 method: 'POST',
@@ -101,12 +117,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(r => r.json())
                 .then(data => {
                     conversationInput.value = data.conversation_id;
+                    if (fetchBaseUrl && !pollIntervalId) {
+                        startPolling();
+                    }
                 })
                 .catch(() => {
                     // ignore
                 });
         }
 
+        function pollOnce() {
+            const conversationId = conversationInput.value;
+            if (!conversationId || !fetchBaseUrl) {
+                return;
+            }
+
+            fetch(fetchBaseUrl.replace('__ID__', conversationId), {
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (Array.isArray(data.messages)) {
+                        syncMessages(data.messages);
+                    }
+                })
+                .catch(() => {
+                    // ignore polling errors
+                });
+        }
+
+        function startPolling() {
+            pollOnce();
+            pollIntervalId = window.setInterval(pollOnce, 4000);
+        }
+
+        // Envoi du message avec le formulaire
         formEl.addEventListener('submit', e => {
             e.preventDefault();
             const message = inputEl.value.trim();
@@ -141,11 +188,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (type !== 'user' && type !== 'guest') {
                             appendMessage(data.message.content, type);
                         }
+                        if (!lastMessageId || data.message.id > lastMessageId) {
+                            lastMessageId = data.message.id;
+                        }
                     }
                 })
                 .catch(() => {
                     // ignore
                 });
+        });
+
+        // Envoi avec la touche Entrée (sans Shift)
+        inputEl.addEventListener('keydown', e => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                formEl.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+            }
         });
     }
 });

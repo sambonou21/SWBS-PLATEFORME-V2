@@ -21,12 +21,12 @@
                     <input id="email" name="email" type="email" value="{{ old('email') }}" required>
                     @error('email')<p class="swbs-form-error">{{ $message }}</p>@enderror
                 </div>
-                <div class="swbs-form-group">
+                <div class="swbs-form-group swbs-form-group-full">
                     <label for="subject">{{ __('contact.form.subject') }}</label>
                     <input id="subject" name="subject" type="text" value="{{ old('subject') }}" required>
                     @error('subject')<p class="swbs-form-error">{{ $message }}</p>@enderror
                 </div>
-                <div class="swbs-form-group">
+                <div class="swbs-form-group swbs-form-group-full">
                     <label for="message">{{ __('contact.form.message') }}</label>
                     <textarea id="message" name="message" rows="5" required>{{ old('message') }}</textarea>
                     @error('message')<p class="swbs-form-error">{{ $message }}</p>@enderror

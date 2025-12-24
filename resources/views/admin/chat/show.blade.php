@@ -40,7 +40,7 @@
                     <textarea id="message" name="message" rows="3" required></textarea>
                     @error('message')<p class="swbs-form-error">{{ $message }}</p>@enderror
                 </div>
-                <button type="submit" class="swbs-btn swbs-btn-primary">{{ __('generic.save') }}</button>
+                <button type="submit" class="swbs-btn swbs-btn-primary">{{ __('chat.reply_button', [], 'fr') ?? __('generic.save') }}</button>
             </form>
         </section>
     </div>

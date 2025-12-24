@@ -18,6 +18,9 @@ class Product extends Model
         'price_fcfa',
         'is_active',
         'stock',
+        'type',
+        'download_url',
+        'external_url',
         'main_image_path',
         'gallery',
     ];

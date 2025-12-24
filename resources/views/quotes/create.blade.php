@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="swbs-form-group">
+                <div class="swbs-form-group swbs-form-group-full">
                     <label for="message">{{ __('quotes.form.message') }}</label>
                     <textarea id="message" name="message" rows="6" required>{{ old('message') }}</textarea>
                     @error('message')<p class="swbs-form-error">{{ $message }}</p>@enderror

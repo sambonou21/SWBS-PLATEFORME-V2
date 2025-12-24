@@ -48,6 +48,7 @@ class ShopController extends Controller
         $quantity = max(1, (int) $request->input('quantity', 1));
         $totalFcfa = $product->price_fcfa * $quantity;
 
+        // Création de la commande quel que soit le type de produit
         $order = Order::create([
             'user_id' => $user?->id,
             'status' => 'pending',
@@ -55,7 +56,7 @@ class ShopController extends Controller
             'currency' => 'FCFA',
             'exchange_rate' => 1,
             'total_amount_currency' => $totalFcfa,
-            'payment_provider' => 'fedepay',
+            'payment_provider' => $product->type === 'affiliate' ? 'affiliate' : 'fedepay',
             'customer_name' => $user?->name ?? $request->input('name', 'Client SWBS'),
             'customer_email' => $user?->email ?? $request->input('email'),
             'customer_phone' => $user?->phone ?? $request->input('phone'),
@@ -69,6 +70,15 @@ class ShopController extends Controller
             'total_price_fcfa' => $totalFcfa,
         ]);
 
+        // Cas particulier des produits d'affiliation : on redirige vers le lien partenaire
+        if ($product->type === 'affiliate' && $product->external_url) {
+            // On marque la commande comme "referred" pour l'admin
+            $order->update(['status' => 'referred']);
+
+            return redirect()->away($product->external_url);
+        }
+
+        // Pour les autres produits (services, digitaux, physiques...), on passe par FedePay
         try {
             $payment = $fedepayService->createPayment($order);
         } catch (\Throwable $e) {

@@ -1,4 +1,8 @@
-<div id="swbs-chat-widget" class="swbs-chat-widget" data-start-url="{{ route('chat.start') }}" data-send-url="{{ route('chat.send') }}">
+<div id="swbs-chat-widget"
+     class="swbs-chat-widget"
+     data-start-url="{{ route('chat.start') }}"
+     data-send-url="{{ route('chat.send') }}"
+     data-fetch-base-url="{{ route('chat.fetch', ['conversation' => '__ID__']) }}">
     <button id="swbs-chat-toggle" class="swbs-chat-toggle">
         <span class="swbs-chat-toggle-label">Chat</span>
     </button>

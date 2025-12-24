@@ -17,6 +17,9 @@ return new class extends Migration {
             $table->decimal('price_fcfa', 12, 2);
             $table->boolean('is_active')->default(true);
             $table->integer('stock')->default(0);
+            $table->string('type')->default('standard'); // standard, service, digital, affiliate, physical
+            $table->string('download_url')->nullable(); // pour les produits digitaux (livres, templates, etc.)
+            $table->string('external_url')->nullable(); // pour les produits d'affiliation
             $table->string('main_image_path')->nullable();
             $table->json('gallery')->nullable();
             $table->timestamps();

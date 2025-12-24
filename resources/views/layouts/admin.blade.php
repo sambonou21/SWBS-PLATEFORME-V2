@@ -8,43 +8,53 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="swbs-body swbs-body-admin">
-<header class="swbs-header swbs-header-admin">
-    <div class="swbs-container swbs-header-inner">
-        <a href="{{ route('admin.dashboard') }}" class="swbs-logo">
-            <span class="swbs-logo-mark">SWBS</span>
-            <span class="swbs-logo-text">Admin</span>
-        </a>
-
-        <nav class="swbs-nav swbs-nav-admin">
-            <a href="{{ route('admin.dashboard') }}" class="swbs-nav-link {{ request()->routeIs('admin.dashboard') ? 'is-active' : '' }}">{{ __('admin.menu.dashboard') }}</a>
-            <a href="{{ route('admin.services.index') }}" class="swbs-nav-link {{ request()->routeIs('admin.services.*') ? 'is-active' : '' }}">{{ __('admin.menu.services') }}</a>
-            <a href="{{ route('admin.portfolio.index') }}" class="swbs-nav-link {{ request()->routeIs('admin.portfolio.*') ? 'is-active' : '' }}">{{ __('admin.menu.portfolio') }}</a>
-            <a href="{{ route('admin.products.index') }}" class="swbs-nav-link {{ request()->routeIs('admin.products.*') ? 'is-active' : '' }}">{{ __('admin.menu.products') }}</a>
-            <a href="{{ route('admin.orders.index') }}" class="swbs-nav-link {{ request()->routeIs('admin.orders.*') ? 'is-active' : '' }}">{{ __('admin.menu.orders') }}</a>
-            <a href="{{ route('admin.quotes.index') }}" class="swbs-nav-link {{ request()->routeIs('admin.quotes.*') ? 'is-active' : '' }}">{{ __('admin.menu.quotes') }}</a>
-            <a href="{{ route('admin.chat.index') }}" class="swbs-nav-link {{ request()->routeIs('admin.chat.*') ? 'is-active' : '' }}">{{ __('admin.menu.chat') }}</a>
-            <a href="{{ route('admin.settings.index') }}" class="swbs-nav-link {{ request()->routeIs('admin.settings.*') ? 'is-active' : '' }}">{{ __('admin.menu.settings') }}</a>
+<div class="swbs-admin-layout">
+    <aside class="swbs-admin-sidebar">
+        <div class="swbs-admin-sidebar-header">
+            <a href="{{ route('admin.dashboard') }}" class="swbs-logo">
+                <span class="swbs-logo-mark">SWBS</span>
+                <span class="swbs-logo-text">Admin</span>
+            </a>
+        </div>
+        <nav class="swbs-admin-nav">
+            <a href="{{ route('admin.dashboard') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.dashboard') ? 'is-active' : '' }}">{{ __('admin.menu.dashboard') }}</a>
+            <a href="{{ route('admin.services.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.services.*') ? 'is-active' : '' }}">{{ __('admin.menu.services') }}</a>
+            <a href="{{ route('admin.portfolio.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.portfolio.*') ? 'is-active' : '' }}">{{ __('admin.menu.portfolio') }}</a>
+            <a href="{{ route('admin.products.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.products.*') ? 'is-active' : '' }}">{{ __('admin.menu.products') }}</a>
+            <a href="{{ route('admin.orders.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.orders.*') ? 'is-active' : '' }}">{{ __('admin.menu.orders') }}</a>
+            <a href="{{ route('admin.quotes.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.quotes.*') ? 'is-active' : '' }}">{{ __('admin.menu.quotes') }}</a>
+            <a href="{{ route('admin.clients.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.clients.*') ? 'is-active' : '' }}">{{ __('admin.menu.clients') }}</a>
+            <a href="{{ route('admin.chat.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.chat.*') ? 'is-active' : '' }}">{{ __('admin.menu.chat') }}</a>
+            <a href="{{ route('admin.settings.index') }}" class="swbs-admin-nav-link {{ request()->routeIs('admin.settings.*') ? 'is-active' : '' }}">{{ __('admin.menu.settings') }}</a>
         </nav>
-
-        <div class="swbs-header-actions">
+        <div class="swbs-admin-sidebar-footer">
             <span class="swbs-admin-user">{{ auth()->user()->name ?? '' }}</span>
             <form method="POST" action="{{ route('logout') }}" class="swbs-inline-form">
                 @csrf
                 <button type="submit" class="swbs-btn swbs-btn-text">{{ __('nav.logout') }}</button>
             </form>
         </div>
-    </div>
-</header>
+    </aside>
 
-<main class="swbs-main swbs-main-admin">
-    <div class="swbs-container">
-        @if(session('status'))
-            <x-alert type="success" :message="session('status')" />
-        @endif
+    <div class="swbs-admin-main">
+        <header class="swbs-admin-topbar">
+            <div class="swbs-admin-topbar-inner">
+                <h1 class="swbs-admin-topbar-title">@yield('title', 'Admin SWBS')</h1>
+                <span class="swbs-admin-topbar-subtitle">Console SWBS</span>
+            </div>
+        </header>
 
-        @yield('content')
+        <main class="swbs-main swbs-main-admin">
+            <div class="swbs-container">
+                @if(session('status'))
+                    <x-alert type="success" :message="session('status')" />
+                @endif
+
+                @yield('content')
+            </div>
+        </main>
     </div>
-</main>
+</div>
 
 <script src="{{ asset('assets/js/app.js') }}" defer></script>
 </body>
