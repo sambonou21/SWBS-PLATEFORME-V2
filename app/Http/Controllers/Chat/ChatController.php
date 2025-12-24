@@ -17,10 +17,16 @@ class ChatController extends Controller
 
     public function start(Request $request): JsonResponse
     {
+        $ip = $request->ip();
+        $country = null; // Peut être enrichi plus tard via un service GeoIP
+
         $conversation = $this->chatService->start(
             $request->user(),
             $request->string('name')->toString() ?: null,
             $request->string('email')->toString() ?: null,
+            $request->string('phone')->toString() ?: null,
+            $ip,
+            $country,
         );
 
         return response()->json([

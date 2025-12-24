@@ -15,14 +15,23 @@ class ChatService
     ) {
     }
 
-    public function start(?User $user = null, ?string $prospectName = null, ?string $prospectEmail = null): Conversation
-    {
+    public function start(
+        ?User $user = null,
+        ?string $prospectName = null,
+        ?string $prospectEmail = null,
+        ?string $prospectPhone = null,
+        ?string $ipAddress = null,
+        ?string $country = null
+    ): Conversation {
         if ($user) {
             $conversation = Conversation::firstOrCreate(
                 ['user_id' => $user->id, 'status' => 'open'],
                 [
                     'prospect_name' => $user->name,
                     'prospect_email' => $user->email,
+                    'prospect_phone' => $user->phone,
+                    'ip_address' => $ipAddress,
+                    'country' => $country,
                     'is_prospect' => false,
                 ]
             );
@@ -34,6 +43,9 @@ class ChatService
                 [
                     'prospect_name' => $prospectName,
                     'prospect_email' => $prospectEmail,
+                    'prospect_phone' => $prospectPhone,
+                    'ip_address' => $ipAddress,
+                    'country' => $country,
                     'is_prospect' => true,
                 ]
             );

@@ -12,7 +12,10 @@ return new class extends Migration {
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('prospect_name')->nullable();
             $table->string('prospect_email')->nullable();
+            $table->string('prospect_phone')->nullable();
             $table->string('prospect_session_id')->nullable()->index();
+            $table->string('ip_address')->nullable();
+            $table->string('country')->nullable();
             $table->enum('status', ['open', 'pending', 'closed'])->default('open');
             $table->boolean('is_prospect')->default(false);
             $table->timestamp('last_message_at')->nullable();

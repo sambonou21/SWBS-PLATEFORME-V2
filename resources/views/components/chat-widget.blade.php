@@ -19,6 +19,11 @@
         <form id="swbs-chat-form" class="swbs-chat-form">
             @csrf
             <input type="hidden" id="swbs-chat-conversation-id" value="">
+            <div id="swbs-chat-contact-fields">
+                <input type="text" id="swbs-chat-name" class="swbs-chat-input" placeholder="{{ __('chat.name_placeholder') }}">
+                <input type="email" id="swbs-chat-email" class="swbs-chat-input" placeholder="{{ __('chat.email_placeholder') }}">
+                <input type="text" id="swbs-chat-phone" class="swbs-chat-input" placeholder="{{ __('chat.phone_placeholder') }}">
+            </div>
             <textarea id="swbs-chat-input" class="swbs-chat-input" placeholder="{{ __('chat.placeholder') }}" rows="2"></textarea>
             <button type="submit" class="swbs-btn swbs-btn-primary swbs-chat-submit">{{ __('chat.start') }}</button>
         </form>

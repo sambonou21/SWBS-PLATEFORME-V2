@@ -10,7 +10,10 @@
             <h2>Client / prospect</h2>
             <p><strong>Nom :</strong> {{ $conversation->user?->name ?? $conversation->prospect_name ?? 'Invité' }}</p>
             <p><strong>Email :</strong> {{ $conversation->user?->email ?? $conversation->prospect_email }}</p>
+            <p><strong>Téléphone :</strong> {{ $conversation->user?->phone ?? $conversation->prospect_phone ?? '-' }}</p>
             <p><strong>Type :</strong> {{ $conversation->is_prospect ? 'Prospect' : 'Client' }}</p>
+            <p><strong>IP :</strong> {{ $conversation->ip_address ?? '-' }}</p>
+            <p><strong>Pays :</strong> {{ $conversation->country ?? '-' }}</p>
         </section>
 
         <section>

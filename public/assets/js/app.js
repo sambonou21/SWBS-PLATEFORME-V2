@@ -106,13 +106,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function startConversation() {
+            const params = new URLSearchParams();
+
+            const nameInput = document.getElementById('swbs-chat-name');
+            const emailInput = document.getElementById('swbs-chat-email');
+            const phoneInput = document.getElementById('swbs-chat-phone');
+
+            if (nameInput && nameInput.value.trim()) {
+                params.append('name', nameInput.value.trim());
+            }
+            if (emailInput && emailInput.value.trim()) {
+                params.append('email', emailInput.value.trim());
+            }
+            if (phoneInput && phoneInput.value.trim()) {
+                params.append('phone', phoneInput.value.trim());
+            }
+
             fetch(startUrl, {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                     'Accept': 'application/json'
                 },
-                body: new URLSearchParams()
+                body: params
             })
                 .then(r => r.json())
                 .then(data => {
