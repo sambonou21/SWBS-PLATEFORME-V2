@@ -50,13 +50,13 @@ class ServiceSeeder extends Seeder
             [
                 'title' => 'Développement sur mesure',
                 'short_description' => 'Solutions techniques personnalisées pour votre entreprise.',
-                'description' => \"Lorsque les solutions standard ne suffisent plus, SWBS conçoit des fonctionnalités et modules sur mesure pour répondre précisément à vos besoins métier.\",
+                'description' => "Lorsque les solutions standard ne suffisent plus, SWBS conçoit des fonctionnalités et modules sur mesure pour répondre précisément à vos besoins métier.",
                 'base_price_fcfa' => null,
             ],
             [
                 'title' => 'E-commerce & solutions de paiement',
                 'short_description' => 'Boutiques en ligne performantes et intégration des paiements.',
-                'description' => \"Création de boutiques en ligne ergonomiques avec gestion des produits, du stock, des commandes et intégration des passerelles de paiement comme FedePay.\",
+                'description' => "Création de boutiques en ligne ergonomiques avec gestion des produits, du stock, des commandes et intégration des passerelles de paiement comme FedePay.",
                 'base_price_fcfa' => 250000,
             ],
         ];
