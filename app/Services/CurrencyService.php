@@ -19,7 +19,7 @@ class CurrencyService
 
         if ($fromDb) {
             $decoded = json_decode($fromDb, true);
-            if (is_array($decoded) &amp;&amp; $decoded !== []) {
+            if (is_array($decoded) && $decoded !== []) {
                 return $decoded;
             }
         }
