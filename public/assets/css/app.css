@@ -543,6 +543,64 @@ body.swbs-body {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
+/* Dashboard client */
+
+.swbs-account-layout {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+}
+
+.swbs-account-sidebar {
+    border-radius: var(--radius-lg);
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 1.4rem 1.5rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.swbs-account-sidebar h2 {
+    margin-top: 0;
+}
+
+.swbs-account-menu {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.swbs-account-menu a {
+    display: block;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.swbs-account-menu a.is-active {
+    background: linear-gradient(130deg, var(--color-primary), #60a5fa);
+    color: #f9fafb;
+}
+
+.swbs-account-menu a:hover {
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+}
+
+.swbs-account-main-section h1 {
+    margin-top: 0;
+}
+
+@media (max-width: 900px) {
+    .swbs-account-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 .swbs-dashboard-card {
     border-radius: var(--radius-lg);
     background: rgba(15, 23, 42, 0.98);

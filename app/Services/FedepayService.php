@@ -10,9 +10,9 @@ class FedepayService
 {
     public function createPayment(Order $order): array
     {
-        $publicKey = config('services.fedepay.public');
-        $secretKey = config('services.fedepay.secret');
-        $mode = config('services.fedepay.mode', 'sandbox');
+        $publicKey = config('services.fedepay.public') ?: \App\Models\Setting::get('payment.fedepay.public');
+        $secretKey = config('services.fedepay.secret') ?: \App\Models\Setting::get('payment.fedepay.secret');
+        $mode = config('services.fedepay.mode', 'sandbox') ?: \App\Models\Setting::get('payment.fedepay.mode', 'sandbox');
 
         if (! $publicKey || ! $secretKey) {
             throw new \RuntimeException('Clés FedePay manquantes dans la configuration.');
@@ -59,6 +59,26 @@ class FedepayService
         ]);
 
         return $data;
+    }
+
+    public function verifyPayment(string $reference): ?array
+    {
+        $secretKey = config('services.fedepay.secret') ?: \App\Models\Setting::get('payment.fedepay.secret');
+        $mode = config('services.fedepay.mode', 'sandbox') ?: \App\Models\Setting::get('payment.fedepay.mode', 'sandbox');
+
+        $baseUrl = $mode === 'live'
+            ? 'https://api.fedepay.com'
+            : 'https://sandbox-api.fedepay.com';
+
+        $response = Http::withToken($secretKey)
+            ->acceptJson()
+            ->get($baseUrl.'/payments/'.$reference);
+
+        if (! $response->successful()) {
+            return null;
+        }
+
+        return $response->json();
     }
 
     public function verifyPayment(string $reference): ?array

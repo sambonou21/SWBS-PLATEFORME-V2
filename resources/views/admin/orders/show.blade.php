@@ -13,6 +13,7 @@
             <p><strong>Adresse :</strong><br>{{ $order->customer_address }}</p>
             <p><strong>Total :</strong> {{ number_format($order->total_amount_fcfa, 0, ',', ' ') }} FCFA</p>
             <p><strong>Statut :</strong> {{ $order->status }}</p>
+            <p><strong>Type de paiement :</strong> {{ $order->payment_provider ?? 'fedepay' }}</p>
 
             <form method="POST" action="{{ route('admin.orders.update', $order) }}" class="swbs-form" style="margin-top: 1rem;">
                 @csrf

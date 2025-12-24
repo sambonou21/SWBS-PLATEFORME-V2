@@ -12,6 +12,7 @@
             <th>Client</th>
             <th>Total FCFA</th>
             <th>Statut</th>
+            <th>Paiement</th>
             <th>Date</th>
             <th>{{ __('generic.actions') }}</th>
         </tr>
@@ -23,6 +24,7 @@
                 <td>{{ $order->customer_name }}</td>
                 <td>{{ number_format($order->total_amount_fcfa, 0, ',', ' ') }}</td>
                 <td>{{ $order->status }}</td>
+                <td>{{ $order->payment_provider ?? 'fedepay' }}</td>
                 <td>{{ $order->created_at?->format('d/m/Y H:i') }}</td>
                 <td>
                     <a href="{{ route('admin.orders.show', $order) }}" class="swbs-link">{{ __('generic.view') }}</a>
