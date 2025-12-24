@@ -81,7 +81,6 @@ class ProductSeeder extends Seeder
                     'gallery' => [],
                 ]
             );
-     _code  new </}
-
+        }
     }
 }
