@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | SWBS</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script defer src="/assets/js/app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <!-- IMAGE: public/assets/img/logo-swbs.png -->
+        <img src="/assets/img/logo-swbs.png" alt="SWBS">
+        <span>SWBS</span>
+      </div>
+      <nav class="nav-links">
+        <a href="/index.html">Accueil</a>
+        <a href="/services.html">Services</a>
+        <a href="/contact.html" class="active">Contact</a>
+        <a href="/devis.html" class="cta">Devis</a>
+      </nav>
+      <button class="theme-toggle">🎛️</button>
+      <button class="burger">☰</button>
+    </div>
+    <div class="container burger-menu">
+      <a href="/index.html">Accueil</a>
+      <a href="/services.html">Services</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/devis.html" class="cta">Devis</a>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h1>Parlons de votre projet</h1>
+    <div class="cols-2">
+      <div class="card">
+        <form class="form" id="contact-form">
+          <label>Nom complet <input type="text" name="name" required></label>
+          <label>Email <input type="email" name="email" required></label>
+          <label>Téléphone <input type="tel" name="phone" required></label>
+          <label>Message <textarea name="message" required></textarea></label>
+          <button class="cta" type="submit">Envoyer</button>
+        </form>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Coordonnées</h3>
+          <p>Ville : Porto-Novo, Bénin</p>
+          <p>Téléphone : <a href="tel:+22996368877">+22996368877</a></p>
+          <p>Email : <a href="mailto:sambonou21@gmail.com">sambonou21@gmail.com</a></p>
+          <a class="cta ghost" href="https://wa.me/22996368877" target="_blank">Discuter sur WhatsApp</a>
+        </div>
+        <!-- IMAGE: public/assets/img/hosting.jpg -->
+        <img src="/assets/img/hosting.jpg" alt="Hébergement SWBS" style="margin-top:12px;">
+      </div>
+    </div>
+  </main>
+
+  <div class="toast"></div>
+  <script>
+    document.querySelector('#contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Merci ! Nous revenons vers vous rapidement.');
+      e.target.reset();
+    });
+    function showToast(text) {
+      const toast = document.querySelector('.toast');
+      toast.textContent = text;
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 3000);
+    }
+  </script>
+</body>
+</html>

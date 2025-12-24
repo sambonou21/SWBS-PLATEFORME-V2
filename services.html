@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Admin | SWBS</title>
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <script defer src="/assets/js/admin.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>SWBS Admin</h2>
+      <a class="nav-item" href="/admin/dashboard.html">Dashboard</a>
+      <a class="nav-item" href="/admin/chat.html">Chat</a>
+      <a class="nav-item active" href="/admin/services.html">Services</a>
+      <a class="nav-item" href="/admin/portfolio.html">Portfolio</a>
+      <a class="nav-item" href="/admin/avis.html">Avis</a>
+      <a class="nav-item" href="/admin/clients.html">Clients</a>
+      <a class="nav-item" href="/admin/quotes.html">Devis</a>
+      <a class="nav-item" href="/api/auth/logout">Déconnexion</a>
+    </aside>
+    <main class="content">
+      <h1>Gestion des services</h1>
+      <div class="card">
+        <form class="form" id="service-form">
+          <input type="hidden" name="id" id="service-id">
+          <label>Titre <input type="text" name="title" id="service-title" required></label>
+          <label>Catégorie <input type="text" name="category" id="service-category" required></label>
+          <label>Description <textarea name="description" id="service-description" required></textarea></label>
+          <label>Icône <input type="text" name="icon"></label>
+          <label>Image URL <input type="text" name="imageUrl"></label>
+          <button class="btn" type="submit">Enregistrer</button>
+        </form>
+      </div>
+      <div class="card" style="margin-top:14px;">
+        <table class="table" id="services-table">
+          <thead><tr><th>Titre</th><th>Catégorie</th><th>Description</th><th>Actions</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

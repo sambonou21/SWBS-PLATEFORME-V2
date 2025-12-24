@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devis Admin | SWBS</title>
+  <link rel="stylesheet" href="/assets/css/admin.css">
+  <script defer src="/assets/js/admin.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>SWBS Admin</h2>
+      <a class="nav-item" href="/admin/dashboard.html">Dashboard</a>
+      <a class="nav-item" href="/admin/chat.html">Chat</a>
+      <a class="nav-item" href="/admin/services.html">Services</a>
+      <a class="nav-item" href="/admin/portfolio.html">Portfolio</a>
+      <a class="nav-item" href="/admin/avis.html">Avis</a>
+      <a class="nav-item" href="/admin/clients.html">Clients</a>
+      <a class="nav-item active" href="/admin/quotes.html">Devis</a>
+      <a class="nav-item" href="/api/auth/logout">Déconnexion</a>
+    </aside>
+    <main class="content">
+      <h1>Devis reçus</h1>
+      <div class="card">
+        <table class="table" id="quotes-table">
+          <thead><tr><th>#</th><th>Type</th><th>Client</th><th>Estimation</th><th>Date</th><th>Action</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarifs SWBS</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script defer src="/assets/js/app.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <!-- IMAGE: public/assets/img/logo-swbs.png -->
+        <img src="/assets/img/logo-swbs.png" alt="SWBS">
+        <span>SWBS</span>
+      </div>
+      <nav class="nav-links">
+        <a href="/index.html">Accueil</a>
+        <a href="/services.html">Services</a>
+        <a href="/tarifs.html" class="active">Tarifs</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/devis.html" class="cta">Devis instantané</a>
+      </nav>
+      <button class="theme-toggle">🎛️</button>
+      <button class="burger">☰</button>
+    </div>
+    <div class="container burger-menu">
+      <a href="/index.html">Accueil</a>
+      <a href="/services.html">Services</a>
+      <a href="/tarifs.html">Tarifs</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/devis.html" class="cta">Devis instantané</a>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h1>Tarifs transparents</h1>
+    <p>Des offres adaptées aux entreprises du Bénin, avec support local et délais maîtrisés.</p>
+
+    <div class="pricing">
+      <div class="card">
+        <h3>Site vitrine</h3>
+        <div class="price">180 000 FCFA</div>
+        <p>5 pages, design personnalisé, SEO de base, hébergement 1 mois inclus.</p>
+      </div>
+      <div class="card">
+        <h3>E-commerce</h3>
+        <div class="price">280 000 FCFA</div>
+        <p>Catalogue, paiement mobile money, gestion livraison, analytics.</p>
+      </div>
+      <div class="card">
+        <h3>Applications mobiles</h3>
+        <div class="price">350 000 FCFA</div>
+        <p>Android/iOS, notifications push, design natif ou hybride.</p>
+      </div>
+      <div class="card">
+        <h3>Support & infogérance</h3>
+        <div class="price">Sur devis</div>
+        <p>Surveillance, sauvegardes, interventions express et astreintes.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>Questions fréquentes</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-question">Quels sont les délais moyens ? <span>+</span></div>
+          <div class="faq-answer">Site vitrine : 10 à 15 jours. E-commerce : 3 à 4 semaines. App mobile/logiciel : selon périmètre, itérations hebdomadaires.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Proposez-vous la rédaction de contenu ? <span>+</span></div>
+          <div class="faq-answer">Oui, rédaction orientée SEO et adaptation locale (français). Possibilité de traduction anglaise sur demande.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Comment se passe le paiement ? <span>+</span></div>
+          <div class="faq-answer">30% à la commande, 40% à la recette intermédiaire, 30% à la mise en production. Mobile money ou virement.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Pouvez-vous reprendre un projet existant ? <span>+</span></div>
+          <div class="faq-answer">Oui, après audit technique nous sécurisons et améliorons votre existant avant d’ajouter des fonctionnalités.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+    });
+  </script>
+</body>
+</html>

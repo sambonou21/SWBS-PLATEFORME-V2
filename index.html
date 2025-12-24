@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWBS Platform | Sam Web Business Services</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script defer src="/assets/js/app.js"></script>
+  <script defer src="/assets/js/particles.js"></script>
+  <script defer src="/assets/js/portfolio.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <!-- IMAGE: public/assets/img/logo-swbs.png -->
+        <img src="/assets/img/logo-swbs.png" alt="SWBS">
+        <span>Sam Web Business Services</span>
+      </div>
+      <nav class="nav-links">
+        <a href="/index.html" class="active">Accueil</a>
+        <a href="/services.html">Services</a>
+        <a href="/tarifs.html">Tarifs</a>
+        <a href="/a-propos.html">À propos</a>
+        <a href="/portfolio.html">Portfolio</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/devis.html" class="cta">Devis instantané</a>
+      </nav>
+      <button class="theme-toggle">🎛️</button>
+      <button class="burger">☰</button>
+    </div>
+    <div class="container burger-menu">
+      <a href="/index.html">Accueil</a>
+      <a href="/services.html">Services</a>
+      <a href="/tarifs.html">Tarifs</a>
+      <a href="/a-propos.html">À propos</a>
+      <a href="/portfolio.html">Portfolio</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/devis.html" class="cta">Devis instantané</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-inner">
+        <div data-animate>
+          <span class="pill">Porto-Novo · Bénin · +22996368877</span>
+          <h1>SWBS conçoit, héberge et supervise vos solutions digitales.</h1>
+          <p>Sites web, logiciels sur mesure, apps mobiles, hébergement robuste et support local. Une équipe dédiée pour des résultats concrets et rapides.</p>
+          <div class="flex">
+            <a class="cta" href="/devis.html">Obtenir un devis</a>
+            <a class="cta ghost" href="/chat.html">Chat en direct</a>
+          </div>
+          <div class="flex" style="margin-top:12px;">
+            <span class="badge">Temps de réponse moyen : &lt; 10 min</span>
+            <span class="badge">Assistance WhatsApp 7j/7</span>
+          </div>
+        </div>
+        <div data-animate>
+          <!-- IMAGE: public/assets/img/hero.jpg -->
+          <img src="/assets/img/hero.jpg" alt="Equipe SWBS">
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="services">
+      <div class="section-title">
+        <h2>Services SWBS</h2>
+        <a href="/services.html" class="cta ghost">Voir tout</a>
+      </div>
+      <div id="services-list" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));"></div>
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <h2>Notre méthode</h2>
+      </div>
+      <div class="process">
+        <div class="card step" data-animate>
+          <strong>Diagnostic express</strong>
+          <p>Audit de vos besoins métiers, inventaire existant et priorisation rapide.</p>
+        </div>
+        <div class="card step" data-animate>
+          <strong>Design et prototypage</strong>
+          <p>Maquettes interactives pour valider vos parcours utilisateurs.</p>
+        </div>
+        <div class="card step" data-animate>
+          <strong>Développement agile</strong>
+          <p>Sprints courts, démos hebdo, qualité et sécurité intégrées.</p>
+        </div>
+        <div class="card step" data-animate>
+          <strong>Hébergement & support</strong>
+          <p>Surveillance 24/7, mises à jour, sauvegardes et support au Bénin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <h2>Portfolio filtrable</h2>
+        <div class="chips">
+          <button class="chip active" data-filter="all">Tout</button>
+          <button class="chip" data-filter="Web">Web</button>
+          <button class="chip" data-filter="Mobile">Mobile</button>
+          <button class="chip" data-filter="Logiciel">Logiciel</button>
+          <button class="chip" data-filter="Marketing">Marketing</button>
+          <button class="chip" data-filter="Hébergement">Hébergement</button>
+        </div>
+      </div>
+      <div id="portfolio-list" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));"></div>
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <h2>Avis clients</h2>
+        <span class="tag">Note moyenne 4.8/5</span>
+      </div>
+      <div id="testimonials" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));"></div>
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <h2>Offres populaires</h2>
+        <a href="/tarifs.html">Voir les tarifs</a>
+      </div>
+      <div class="pricing">
+        <div class="card" data-animate>
+          <span class="tag">Site vitrine</span>
+          <div class="price">à partir de 180 000 FCFA</div>
+          <p>Design personnalisé, 5 pages, SEO de base, hébergement inclus le 1er mois.</p>
+        </div>
+        <div class="card" data-animate>
+          <span class="tag">E-commerce</span>
+          <div class="price">à partir de 280 000 FCFA</div>
+          <p>Catalogue, paiement mobile money, livraison, tableaux de bord ventes.</p>
+        </div>
+        <div class="card" data-animate>
+          <span class="tag">Support & infogérance</span>
+          <div class="price">sur mesure</div>
+          <p>Maintenance proactive, sauvegardes, supervision et interventions express.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="card">
+        <div class="cols-2">
+          <div>
+            <h2>Prêts à accélérer votre business ?</h2>
+            <p>Appelez-nous au +22996368877 ou passez par le chat en direct. Nous répondons rapidement.</p>
+          </div>
+          <div class="flex">
+            <a class="cta" href="/contact.html">Contact</a>
+            <a class="cta ghost" href="/devis.html">Devis instantané</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast"></div>
+
+  <div id="portfolio-modal" class="card" style="display:none; position:fixed; inset:20% auto auto 50%; transform:translateX(-50%); z-index:100; max-width:500px;">
+    <div id="portfolio-modal-body"></div>
+    <button class="cta ghost" data-modal-close>Fermer</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devis instantané | SWBS</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script defer src="/assets/js/app.js"></script>
+  <script defer src="/assets/js/devis.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <!-- IMAGE: public/assets/img/logo-swbs.png -->
+        <img src="/assets/img/logo-swbs.png" alt="SWBS">
+        <span>SWBS</span>
+      </div>
+      <nav class="nav-links">
+        <a href="/index.html">Accueil</a>
+        <a href="/services.html">Services</a>
+        <a href="/devis.html" class="active">Devis</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <button class="theme-toggle">🎛️</button>
+      <button class="burger">☰</button>
+    </div>
+    <div class="container burger-menu">
+      <a href="/index.html">Accueil</a>
+      <a href="/services.html">Services</a>
+      <a href="/devis.html">Devis</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h1>Devis instantané</h1>
+    <p>Estimation rapide en FCFA, ajustée selon votre besoin. Les détails nous permettent d’affiner.</p>
+    <div class="cols-2">
+      <div class="card">
+        <form class="form" id="devis-form">
+          <label>Type de projet
+            <select name="projectType">
+              <option value="vitrine">Site vitrine</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="logiciel">Logiciel sur mesure</option>
+              <option value="mobile">Application mobile</option>
+            </select>
+          </label>
+          <label>Nombre de pages/écrans <input type="number" name="pages" value="5" min="1"></label>
+          <label><input type="checkbox" name="ecommerce"> Paiement / e-commerce</label>
+          <label><input type="checkbox" name="maintenance"> Maintenance & support</label>
+          <label><input type="checkbox" name="marketing"> Marketing digital</label>
+          <label>Description détaillée <textarea name="description"></textarea></label>
+          <label>Votre email ou téléphone <input type="text" name="contact" required></label>
+          <div class="card">Estimation: <strong id="estimate"></strong></div>
+          <button class="cta" type="submit">Enregistrer ma demande</button>
+          <a class="cta ghost" id="whatsapp-btn" target="_blank">Envoyer sur WhatsApp</a>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Pourquoi demander un devis ?</h3>
+        <ul>
+          <li>Réponse sous quelques minutes en journée</li>
+          <li>Chiffrage transparent, sans frais cachés</li>
+          <li>Conseils personnalisés adaptés à votre secteur</li>
+        </ul>
+        <!-- IMAGE: public/assets/img/service-web.jpg -->
+        <img src="/assets/img/service-web.jpg" alt="Projet SWBS">
+      </div>
+    </div>
+  </main>
+  <div class="toast"></div>
+</body>
+</html>
