@@ -122,7 +122,8 @@ body.swbs-body {
     font-size: 0.92rem;
     text-decoration: none;
     color: var(--text-muted);
-    padding: 0.25rem 0;
+    padding: 0.35rem 0;
+    transition: color 0.18s ease-out, transform 0.12s ease-out;
 }
 
 .swbs-nav-link::after {
@@ -138,11 +139,12 @@ body.swbs-body {
 }
 
 .swbs-nav-link:hover {
-    color: #f9fafb;
+    color: var(--text-main);
+    transform: translateY(-1px);
 }
 
 .swbs-nav-link.is-active {
-    color: #f9fafb;
+    color: var(--text-main);
 }
 
 .swbs-nav-link.is-active::after {
@@ -658,8 +660,8 @@ body.swbs-body {
 
 .swbs-account-sidebar {
     border-radius: var(--radius-lg);
-    background: rgba(15, 23, 42, 0.98);
-    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
     padding: 1.4rem 1.5rem;
     box-shadow: var(--shadow-soft);
 }
@@ -708,14 +710,21 @@ body.swbs-body {
 
 .swbs-dashboard-card {
     border-radius: var(--radius-lg);
-    background: rgba(15, 23, 42, 0.98);
-    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
     padding: 1.2rem 1.4rem;
     box-shadow: var(--shadow-soft);
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out;
 }
 
 .swbs-dashboard-card h2 {
     margin-top: 0;
+}
+
+.swbs-dashboard-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.8);
 }
 
 .swbs-list {
@@ -983,8 +992,8 @@ body.swbs-body {
 
 .swbs-admin-sidebar {
     width: 260px;
-    background: radial-gradient(circle at top left, #020617, #020617 60%);
-    border-right: 1px solid rgba(148, 163, 184, 0.3);
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-subtle);
     padding: 1.5rem 1.25rem;
     display: flex;
     flex-direction: column;
@@ -1009,11 +1018,13 @@ body.swbs-body {
     font-size: 0.9rem;
     text-decoration: none;
     color: var(--text-muted);
+    transition: background 0.16s ease-out, color 0.16s ease-out, transform 0.12s ease-out;
 }
 
 .swbs-admin-nav-link:hover {
     background: rgba(15, 23, 42, 0.9);
-    color: #e5e7eb;
+    color: var(--text-main);
+    transform: translateX(2px);
 }
 
 .swbs-admin-nav-link.is-active {
