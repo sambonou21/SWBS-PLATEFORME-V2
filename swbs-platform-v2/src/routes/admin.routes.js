@@ -46,36 +46,6 @@ router.patch(
   validate(
     Joi.object({
       presenceAdmin: Joi.boolean().optional(),
-  async (req, res, next) => {
-    try {
-      const patch = {};
-      if (req.body.presenceAdmin !== undefined) {
-        patch.presenceAdmin = req.body.presenceAdmin ? 1 : 0;
-      }
-      if (req.body.currencyRates) {
-        patch.currencyRates = JSON.stringify(req.body.currencyRates);
-      }
-      if (req.body.fedapayKeys) {
-        patch.fedapayKeys = JSON.stringify(req.body.fedapayKeys);
-      }
-      if (req.body.aiKeys) {
-        patch.aiKeys = JSON.stringify(req.body.aiKeys);
-      }
-      if (req.body.languageDefault) {
-        patch.languageDefault = req.body.languageDefault;
-      }
-      if (req.body.chatConfig) {
-        patch.chatConfig = JSON.stringify(req.body.chatConfig);
-      }
-
-      const settings = await settingsService.updateSettings(patch);
-      res.json({ settings });
-    } catch (err) {
-      next(err);
-    }
-  }
-);
-
       currencyRates: Joi.object().pattern(Joi.string(), Joi.number()).optional(),
       fedapayKeys: Joi.object().optional(),
       aiKeys: Joi.object().optional(),
@@ -83,7 +53,7 @@ router.patch(
       chatConfig: Joi.object().optional(),
     })
   ),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const patch = {};
       if (req.body.presenceAdmin !== undefined) {
@@ -123,7 +93,7 @@ const serviceSchema = Joi.object({
   price: Joi.number().positive().allow(null),
 });
 
-router.get('/services', async (req, res, next) =&gt; {
+router.get('/services', async (req, res, next) => {
   try {
     const services = await serviceService.listServices();
     res.json({ services });
@@ -136,7 +106,7 @@ router.post(
   '/services',
   servicesUploader.uploadSingle('image'),
   validate(serviceSchema),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const slug =
         slugify(req.body.title, { lower: true, strict: true }) +
@@ -160,7 +130,7 @@ router.post(
 router.put(
   '/services/:id',
   servicesUploader.uploadSingle('image'),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const patch = {};
       if (req.body.title) patch.title = req.body.title;
@@ -176,7 +146,7 @@ router.put(
   }
 );
 
-router.delete('/services/:id', async (req, res, next) =&gt; {
+router.delete('/services/:id', async (req, res, next) => {
   try {
     await serviceService.deleteService(req.params.id);
     res.json({ ok: true });
@@ -195,7 +165,7 @@ const portfolioSchema = Joi.object({
   category: Joi.string().max(191).allow('', null),
 });
 
-router.get('/portfolio', async (req, res, next) =&gt; {
+router.get('/portfolio', async (req, res, next) => {
   try {
     const items = await portfolioService.listPortfolio();
     res.json({ items });
@@ -208,7 +178,7 @@ router.post(
   '/portfolio',
   portfolioUploader.uploadSingle('image'),
   validate(portfolioSchema),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const slug =
         slugify(req.body.title, { lower: true, strict: true }) +
@@ -232,7 +202,7 @@ router.post(
 router.put(
   '/portfolio/:id',
   portfolioUploader.uploadSingle('image'),
-  async (req, res, next) =&gt; {
+  async (req, res, next) => {
     try {
       const patch = {};
       if (req.body.title) patch.title = req.body.title;
@@ -251,7 +221,7 @@ router.put(
   }
 );
 
-router.delete('/portfolio/:id', async (req, res, next) =&gt; {
+router.delete('/portfolio/:id', async (req, res, next) => {
   try {
     await portfolioService.deletePortfolio(req.params.id);
     res.json({ ok: true });
@@ -264,7 +234,7 @@ router.delete('/portfolio/:id', async (req, res, next) =&gt; {
 // CLIENTS (liste basique)
 // ----------------------
 
-router.get('/clients', async (req, res, next) =&gt; {
+router.get('/clients', async (req, res, next) => {
   try {
     const [users] = await db
       .promise()
@@ -279,7 +249,7 @@ router.get('/clients', async (req, res, next) =&gt; {
 // ORDERS (admin listing)
 // ----------------------
 
-router.get('/orders', async (req, res, next) =&gt; {
+router.get('/orders', async (req, res, next) => {
   try {
     const [orders] = await db
       .promise()
