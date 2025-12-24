@@ -49,8 +49,8 @@ body.swbs-body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
     background: radial-gradient(circle at top left, var(--bg-body), var(--bg-card) 60%);
-    color: var(--text-main_code);new
-</}
+    color: var(--text-main);
+}
 
 /* Layout */
 
@@ -71,8 +71,8 @@ body.swbs-body {
     top: 0;
     z-index: 20;
     backdrop-filter: blur(18px);
-    background: linear-gradient(90deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.93));
-    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    background: linear-gradient(90deg, var(--bg-header), var(--bg-header));
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .swbs-header-inner {
@@ -155,6 +155,94 @@ body.swbs-body {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+}
+
+/* Panier */
+
+.swbs-cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    z-index: 49;
+}
+
+.swbs-cart-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background: var(--bg-card);
+    border-left: 1px solid var(--border-subtle);
+    box-shadow: 0 0 30px rgba(15, 23, 42, 0.7);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+}
+
+.swbs-cart-panel-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.swbs-cart-close {
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.swbs-cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+.swbs-cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.swbs-cart-item-name {
+    font-weight: 500;
+}
+
+.swbs-cart-item-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.swbs-cart-panel-footer {
+    border-top: 1px solid var(--border-subtle);
+    padding: 0.75rem 1.25rem 1.1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+/* Bouton langue flottant */
+
+.swbs-lang-toggle {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 48;
+    border-radius: 999px;
+    border: none;
+    background: rgba(15, 23, 42, 0.95);
+    color: #e5e7eb;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
 }
 
 .swbs-select {
@@ -670,7 +758,7 @@ body.swbs-body {
     padding-top: 2.5rem;
     margin-top: 2rem;
     background: radial-gradient(circle at top, var(--bg-footer), var(--bg-footer));
-    border-top: 1px solid var(--border-subtle25);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .swbs-footer-inner {

@@ -70,15 +70,15 @@
 <section class="swbs-section swbs-section-alt">
     <div class="swbs-container">
         <header class="swbs-section-header">
-            <h2>Offres &amp; tarifs</h2>
-            <p>Des packs adaptés aux besoins des entrepreneurs, TPE et PME.</p>
+            <h2>{{ __('home.pricing.title') }}</h2>
+            <p>{{ __('home.pricing.subtitle') }}</p>
         </header>
 
         <div class="swbs-grid swbs-grid-3">
             <article class="swbs-card">
-                <h3>Pack Starter</h3>
-                <p>Idéal pour lancer votre présence en ligne avec un site vitrine simple.</p>
-                <p class="swbs-card-price">À partir de 150 000 FCFA</p>
+                <h3>{{ __('home.pricing.starter.title') }}</h3>
+                <p>{{ __('home.pricing.starter.desc') }}</p>
+                <p class="swbs-card-price">{{ __('home.pricing.starter.price') }}</p>
                 <ul class="swbs-side-list">
                     <li>Site vitrine 3 à 5 pages</li>
                     <li>Formulaire de contact</li>
@@ -86,9 +86,9 @@
                 </ul>
             </article>
             <article class="swbs-card">
-                <h3>Pack Business</h3>
-                <p>Pour structurer votre activité avec plus de pages et des fonctionnalités avancées.</p>
-                <p class="swbs-card-price">À partir de 250 000 FCFA</p>
+                <h3>{{ __('home.pricing.business.title') }}</h3>
+                <p>{{ __('home.pricing.business.desc') }}</p>
+                <p class="swbs-card-price">{{ __('home.pricing.business.price') }}</p>
                 <ul class="swbs-side-list">
                     <li>Site complet (jusqu&apos;à 10 pages)</li>
                     <li>Blog ou actualités</li>
@@ -96,9 +96,9 @@
                 </ul>
             </article>
             <article class="swbs-card">
-                <h3>Pack E-commerce</h3>
-                <p>Pour vendre vos produits et services en ligne avec paiement intégré.</p>
-                <p class="swbs-card-price">À partir de 350 000 FCFA</p>
+                <h3>{{ __('home.pricing.ecommerce.title') }}</h3>
+                <p>{{ __('home.pricing.ecommerce.desc') }}</p>
+                <p class="swbs-card-price">{{ __('home.pricing.ecommerce.price') }}</p>
                 <ul class="swbs-side-list">
                     <li>Boutique en ligne</li>
                     <li>Gestion des commandes</li>
@@ -171,22 +171,22 @@
 <section class="swbs-section swbs-section-alt">
     <div class="swbs-container">
         <header class="swbs-section-header">
-            <h2>Avis clients</h2>
-            <p>Ils ont confié leur présence digitale à SWBS.</p>
+            <h2>{{ __('home.testimonials.title') }}</h2>
+            <p>{{ __('home.testimonials.subtitle') }}</p>
         </header>
 
         <div class="swbs-grid swbs-grid-3">
             <article class="swbs-card">
-                <p>« SWBS a totalement modernisé notre image et notre site. Nous recevons plus de demandes de devis qu&apos;avant. »</p>
-                <p class="swbs-card-meta">— Agence immobilière à Douala</p>
+                <p>{{ __('home.testimonials.1.text') }}</p>
+                <p class="swbs-card-meta">{{ __('home.testimonials.1.meta') }}</p>
             </article>
             <article class="swbs-card">
-                <p>« Grâce à la boutique en ligne mise en place par SWBS, nous vendons nos produits 24h/24. »</p>
-                <p class="swbs-card-meta">— Boutique de vêtements à Cotonou</p>
+                <p>{{ __('home.testimonials.2.text') }}</p>
+                <p class="swbs-card-meta">{{ __('home.testimonials.2.meta') }}</p>
             </article>
             <article class="swbs-card">
-                <p>« Le chat et l&apos;espace client nous permettent de mieux suivre nos projets avec nos clients. »</p>
-                <p class="swbs-card-meta">— Consultant indépendant</p>
+                <p>{{ __('home.testimonials.3.text') }}</p>
+                <p class="swbs-card-meta">{{ __('home.testimonials.3.meta') }}</p>
             </article>
         </div>
     </div>

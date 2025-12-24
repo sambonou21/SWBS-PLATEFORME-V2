@@ -6,6 +6,7 @@
     <meta name="description" content="Sam Web Business Services (SWBS) est une plateforme digitale tout-en-un permettant aux entreprises de présenter leurs services, gérer leurs clients, automatiser leurs devis, communiquer en temps réel et vendre leurs produits.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -15,7 +16,7 @@
     <div class="swbs-container swbs-header-inner">
         <a href="{{ route('home') }}" class="swbs-logo">
             <span class="swbs-logo-mark">SWBS</span>
-            <span class="swbs-logo-text">Sam Web Business Services</span>
+            <span class="swbs-logo-text">SWBS</span>
         </a>
 
         <nav class="swbs-nav" id="main-nav">
@@ -28,16 +29,8 @@
 
         <div class="swbs-header-actions">
             <button type="button" class="swbs-btn swbs-btn-text" id="swbs-theme-toggle">
-                <span data-theme-label>Mode sombre</span>
+                <span data-theme-label>{{ __('ui.theme_dark') }}</span>
             </button>
-
-            <form method="POST" action="{{ route('locale.switch') }}" class="swbs-inline-form">
-                @csrf
-                <select name="lang" class="swbs-select" onchange="this.form.submit()">
-                    <option value="fr" @selected(app()->getLocale() === 'fr')>FR</option>
-                    <option value="en" @selected(app()->getLocale() === 'en')>EN</option>
-                </select>
-            </form>
 
             <form method="POST" action="{{ route('currency.switch') }}" class="swbs-inline-form">
                 @csrf
@@ -51,6 +44,10 @@
                     @endforeach
                 </select>
             </form>
+
+            <button type="button" class="swbs-btn swbs-btn-text" id="swbs-cart-button">
+                {{ __('ui.cart') }} (<span id="swbs-cart-count">0</span>)
+            </button>
 
             @auth
                 <a href="{{ route('dashboard') }}" class="swbs-btn swbs-btn-outline">{{ __('nav.dashboard') }}</a>
@@ -114,6 +111,28 @@
 </footer>
 
 <x-chat-widget />
+
+<form id="swbs-lang-form" action="{{ route('locale.switch') }}" method="POST" style="display: none;">
+    @csrf
+    <input type="hidden" name="lang" id="swbs-lang-input" value="{{ app()->getLocale() }}">
+</form>
+
+<button type="button" id="swbs-lang-toggle" class="swbs-lang-toggle">
+    {{ strtoupper(app()->getLocale()) }}
+</button>
+
+<div id="swbs-cart-overlay" class="swbs-cart-overlay" hidden></div>
+<aside id="swbs-cart-panel" class="swbs-cart-panel" hidden>
+    <div class="swbs-cart-panel-header">
+        <h3>{{ __('ui.cart') }}</h3>
+        <button type="button" id="swbs-cart-close" class="swbs-cart-close">×</button>
+    </div>
+    <div id="swbs-cart-items" class="swbs-cart-items"></div>
+    <div class="swbs-cart-panel-footer">
+        <a href="{{ route('shop.index') }}" class="swbs-btn swbs-btn-outline">{{ __('ui.cart_go_shop') }}</a>
+        <a href="{{ route('shop.index') }}" class="swbs-btn swbs-btn-primary">{{ __('ui.cart_checkout') }}</a>
+    </div>
+</aside>
 
 <script src="{{ asset('assets/js/app.js') }}" defer></script>
 </body>

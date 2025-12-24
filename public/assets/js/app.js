@@ -36,6 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme('dark');
     }
 
+    // Bouton langue flottant
+    const langToggle = document.getElementById('swbs-lang-toggle');
+    const langInput = document.getElementById('swbs-lang-input');
+    const langForm = document.getElementById('swbs-lang-form');
+
+    if (langToggle && langInput && langForm) {
+        langToggle.addEventListener('click', () => {
+            const current = (langInput.value || 'fr').toLowerCase();
+            const next = current === 'fr' ? 'en' : 'fr';
+            langInput.value = next;
+            langForm.submit();
+        });
+    }
+
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const current = body.dataset.theme === 'light' ? 'light' : 'dark';
@@ -47,6 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Panier en localStorage
     const CART_KEY = 'swbs_cart';
+    const cartButton = document.getElementById('swbs-cart-button');
+    const cartCountEl = document.getElementById('swbs-cart-count');
+    const cartOverlay = document.getElementById('swbs-cart-overlay');
+    const cartPanel = document.getElementById('swbs-cart-panel');
+    const cartItemsEl = document.getElementById('swbs-cart-items');
+    const cartCloseBtn = document.getElementById('swbs-cart-close');
 
     function getCart() {
         try {
@@ -61,10 +81,71 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
+    function renderCart() {
+        if (!cartItemsEl || !cartCountEl) return;
+        const cart = getCart();
+        const count = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+        cartCountEl.textContent = count.toString();
+
+        cartItemsEl.innerHTML = '';
+        if (cart.length === 0) {
+            const p = document.createElement('p');
+            p.textContent = 'Votre panier est vide.';
+            cartItemsEl.appendChild(p);
+            return;
+        }
+
+        cart.forEach(item => {
+            const row = document.createElement('div');
+            row.classList.add('swbs-cart-item');
+
+            const left = document.createElement('div');
+            left.classList.add('swbs-cart-item-name');
+            left.textContent = item.name;
+
+            const right = document.createElement('div');
+            right.classList.add('swbs-cart-item-meta');
+            right.textContent = `${item.qty || 1} × ${item.price} ${item.currency}`;
+
+            row.appendChild(left);
+            row.appendChild(right);
+            cartItemsEl.appendChild(row);
+        });
+    }
+
     function addToCart(item) {
         const cart = getCart();
-        cart.push(item);
+        const existing = cart.find(c => c.id === item.id && c.currency === item.currency);
+        if (existing) {
+            existing.qty = (existing.qty || 1) + 1;
+        } else {
+            cart.push({ ...item, qty: 1 });
+        }
         saveCart(cart);
+        renderCart();
+    }
+
+    function openCart() {
+        if (!cartPanel || !cartOverlay) return;
+        renderCart();
+        cartPanel.hidden = false;
+        cartOverlay.hidden = false;
+    }
+
+    function closeCart() {
+        if (!cartPanel || !cartOverlay) return;
+        cartPanel.hidden = true;
+        cartOverlay.hidden = true;
+    }
+
+    if (cartButton) {
+        cartButton.addEventListener('click', openCart);
+    }
+    if (cartOverlay) {
+        cartOverlay.addEventListener('click', closeCart);
+    }
+    if (cartCloseBtn) {
+        cartCloseBtn.addEventListener('click', closeCart);
     }
 
     document.querySelectorAll('.js-add-to-cart').forEach(btn => {
@@ -74,12 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: btn.dataset.name,
                 price: parseFloat(btn.dataset.price),
                 currency: btn.dataset.currency,
-                qty: 1,
             };
             addToCart(item);
-            alert('Produit ajouté au panier.');
         });
     });
+
+    // Initial render
+    renderCart();
 
     // Chat widget (fallback HTTP)
     const widget = document.getElementById('swbs-chat-widget');
