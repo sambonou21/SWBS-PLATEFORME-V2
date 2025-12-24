@@ -1,4 +1,5 @@
 :root {
+    /* Palette SWBS (commune jour / nuit) */
     --color-primary: #1E66FF;
     --color-secondary: #18B26B;
     --color-accent: #FF8A00;
@@ -9,6 +10,13 @@
     --accent: var(--color-accent);
     --error: var(--color-error);
 
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
+}
+
+/* Mode sombre (par défaut) */
+.swbs-theme-dark {
     --bg-body: #0f172a;
     --bg-card: #020617;
     --bg-card-alt: #020617;
@@ -17,9 +25,18 @@
     --text-main: #e5e7eb;
     --text-muted: #9ca3af;
     --border-subtle: rgba(148, 163, 184, 0.25);
-    --radius-lg: 16px;
-    --radius-md: 10px;
-    --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
+}
+
+/* Mode clair */
+.swbs-theme-light {
+    --bg-body: #f3f4f6;
+    --bg-card: #ffffff;
+    --bg-card-alt: #f9fafb;
+    --bg-header: rgba(255, 255, 255, 0.96);
+    --bg-footer: #f9fafb;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --border-subtle: rgba(209, 213, 219, 0.8);
 }
 
 *,
@@ -31,9 +48,9 @@
 body.swbs-body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
-    background: radial-gradient(circle at top left, #0b1120, #020617 60%);
-    color: var(--text-main);
-}
+    background: radial-gradient(circle at top left, var(--bg-body), var(--bg-card) 60%);
+    color: var(--text-main_code);new
+</}
 
 /* Layout */
 
@@ -652,8 +669,8 @@ body.swbs-body {
 .swbs-footer {
     padding-top: 2.5rem;
     margin-top: 2rem;
-    background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), #020617);
-    border-top: 1px solid rgba(148, 163, 184, 0.25);
+    background: radial-gradient(circle at top, var(--bg-footer), var(--bg-footer));
+    border-top: 1px solid var(--border-subtle25);
 }
 
 .swbs-footer-inner {

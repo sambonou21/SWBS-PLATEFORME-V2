@@ -10,7 +10,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body class="swbs-body">
+<body class="swbs-body swbs-theme-dark" data-theme="dark">
 <header class="swbs-header">
     <div class="swbs-container swbs-header-inner">
         <a href="{{ route('home') }}" class="swbs-logo">
@@ -27,6 +27,10 @@
         </nav>
 
         <div class="swbs-header-actions">
+            <button type="button" class="swbs-btn swbs-btn-text" id="swbs-theme-toggle">
+                <span data-theme-label>Mode sombre</span>
+            </button>
+
             <form method="POST" action="{{ route('locale.switch') }}" class="swbs-inline-form">
                 @csrf
                 <select name="lang" class="swbs-select" onchange="this.form.submit()">

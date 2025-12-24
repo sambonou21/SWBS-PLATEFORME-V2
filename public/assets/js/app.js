@@ -9,6 +9,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Thème jour/nuit
+    const THEME_KEY = 'swbs_theme';
+    const body = document.body;
+    const themeToggle = document.getElementById('swbs-theme-toggle');
+    const themeLabel = themeToggle ? themeToggle.querySelector('[data-theme-label]') : null;
+
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            body.classList.remove('swbs-theme-dark');
+            body.classList.add('swbs-theme-light');
+            body.dataset.theme = 'light';
+            if (themeLabel) themeLabel.textContent = 'Mode clair';
+        } else {
+            body.classList.remove('swbs-theme-light');
+            body.classList.add('swbs-theme-dark');
+            body.dataset.theme = 'dark';
+            if (themeLabel) themeLabel.textContent = 'Mode sombre';
+        }
+    }
+
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+        applyTheme(savedTheme);
+    } else {
+        applyTheme('dark');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const current = body.dataset.theme === 'light' ? 'light' : 'dark';
+            const next = current === 'light' ? 'dark' : 'light';
+            localStorage.setItem(THEME_KEY, next);
+            applyTheme(next);
+        });
+    }
+
     // Panier en localStorage
     const CART_KEY = 'swbs_cart';
 

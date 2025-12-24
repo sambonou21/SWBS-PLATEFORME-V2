@@ -70,6 +70,48 @@
 <section class="swbs-section swbs-section-alt">
     <div class="swbs-container">
         <header class="swbs-section-header">
+            <h2>Offres &amp; tarifs</h2>
+            <p>Des packs adaptés aux besoins des entrepreneurs, TPE et PME.</p>
+        </header>
+
+        <div class="swbs-grid swbs-grid-3">
+            <article class="swbs-card">
+                <h3>Pack Starter</h3>
+                <p>Idéal pour lancer votre présence en ligne avec un site vitrine simple.</p>
+                <p class="swbs-card-price">À partir de 150 000 FCFA</p>
+                <ul class="swbs-side-list">
+                    <li>Site vitrine 3 à 5 pages</li>
+                    <li>Formulaire de contact</li>
+                    <li>Design responsive</li>
+                </ul>
+            </article>
+            <article class="swbs-card">
+                <h3>Pack Business</h3>
+                <p>Pour structurer votre activité avec plus de pages et des fonctionnalités avancées.</p>
+                <p class="swbs-card-price">À partir de 250 000 FCFA</p>
+                <ul class="swbs-side-list">
+                    <li>Site complet (jusqu&apos;à 10 pages)</li>
+                    <li>Blog ou actualités</li>
+                    <li>Automatisation de devis</li>
+                </ul>
+            </article>
+            <article class="swbs-card">
+                <h3>Pack E-commerce</h3>
+                <p>Pour vendre vos produits et services en ligne avec paiement intégré.</p>
+                <p class="swbs-card-price">À partir de 350 000 FCFA</p>
+                <ul class="swbs-side-list">
+                    <li>Boutique en ligne</li>
+                    <li>Gestion des commandes</li>
+                    <li>Intégration FedePay</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="swbs-section swbs-section-alt">
+    <div class="swbs-container">
+        <header class="swbs-section-header">
             <h2>{{ __('portfolio.title') }}</h2>
             <p>{{ __('portfolio.subtitle') }}</p>
         </header>
@@ -122,6 +164,30 @@
 
         <div class="swbs-section-cta">
             <a href="{{ route('shop.index') }}" class="swbs-btn swbs-btn-outline">{{ __('shop.title') }}</a>
+        </div>
+    </div>
+</section>
+
+<section class="swbs-section swbs-section-alt">
+    <div class="swbs-container">
+        <header class="swbs-section-header">
+            <h2>Avis clients</h2>
+            <p>Ils ont confié leur présence digitale à SWBS.</p>
+        </header>
+
+        <div class="swbs-grid swbs-grid-3">
+            <article class="swbs-card">
+                <p>« SWBS a totalement modernisé notre image et notre site. Nous recevons plus de demandes de devis qu&apos;avant. »</p>
+                <p class="swbs-card-meta">— Agence immobilière à Douala</p>
+            </article>
+            <article class="swbs-card">
+                <p>« Grâce à la boutique en ligne mise en place par SWBS, nous vendons nos produits 24h/24. »</p>
+                <p class="swbs-card-meta">— Boutique de vêtements à Cotonou</p>
+            </article>
+            <article class="swbs-card">
+                <p>« Le chat et l&apos;espace client nous permettent de mieux suivre nos projets avec nos clients. »</p>
+                <p class="swbs-card-meta">— Consultant indépendant</p>
+            </article>
         </div>
     </div>
 </section>
